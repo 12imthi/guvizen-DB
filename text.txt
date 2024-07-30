@@ -1,0 +1,55 @@
+create table zenclass(
+zen_id int primary key,
+task varchar(30),
+mentor varchar(30),
+student varchar(30),
+queries varchar(30)
+);
+
+create table student(
+st_id int primary key,
+first_name varchar(30),
+last_name varchar(30),
+batch varchar(30),
+performance varchar(30),
+zen_id int,
+foreign key (zen_id) references zenclass(zen_id)
+);
+
+create table task(
+t_id int primary key,
+daily_task varchar(30),
+capstone varchar(30),
+zen_id int,
+st_id int,
+foreign key (zen_id) references zenclass(zen_id),
+foreign key (st_id) references student(st_id)
+);
+
+create table mentor(
+mn_id int primary key,
+mentor_reviews varchar(30),
+mentor_attdance varchar(30),
+mentor_performance varchar(30),
+zen_id int,
+st_id int,
+t_id int,
+foreign key (zen_id) references zenclass(zen_id),
+foreign key (st_id) references student(st_id),
+foreign key (t_id) references task(t_id)
+);
+
+create table queries(
+q_id int primary key,
+morning_query varchar(30),
+evening_query varchar(30),
+afternoon_query varchar(30),
+zen_id int,
+st_id int,
+t_id int,
+mn_id int,
+foreign key (zen_id) references zenclass(zen_id),
+foreign key (st_id) references student(st_id),
+foreign key (t_id) references task(t_id),
+foreign key (mn_id) references mentor(mn_id)
+);
