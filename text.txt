@@ -53,3 +53,20 @@ foreign key (st_id) references student(st_id),
 foreign key (t_id) references task(t_id),
 foreign key (mn_id) references mentor(mn_id)
 );
+
+create table capstone(
+cap_id int primary key,
+morning_query varchar(30),
+evening_query varchar(30),
+afternoon_query varchar(30),
+zen_id int,
+st_id int,
+t_id int,
+mn_id int,
+q_id int,
+foreign key (zen_id) references zenclass(zen_id),
+foreign key (st_id) references student(st_id),
+foreign key (t_id) references task(t_id),
+foreign key (mn_id) references mentor(mn_id),
+foreign key (q_id) references queries(q_id),
+);
